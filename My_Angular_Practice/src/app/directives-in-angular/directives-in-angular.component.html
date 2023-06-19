@@ -46,9 +46,9 @@
   
   <table class="table-container">
     <tr>
-      <th>carName</th>
-      <th>carPrice</th>
-      <th>color</th>
+      <th *ngFor="let heading of tableHeadings">{{heading}}</th>
+    </tr>
+      
     </tr>
     <tr *ngFor = "let tableData of carDetails">
       <td>{{tableData.carName}}</td>
@@ -57,9 +57,38 @@
     </tr>
   </table>
   
-  <ul *ngFor="let dataItems of data ; let i = index">
-  <li >{{dataItems}}</li>
-  
+  <ul *ngFor="let data of data2">
+  <li >{{data}}</li>
+  </ul>
+  <ul *ngFor = "let data of data3">
+    <li>{{data}}</li>
   </ul>
   
+  <div [ngSwitch] = "switchValue">
+
+    <h2 *ngSwitchCase = "600"> 600 Value </h2>
+    <h2 *ngSwitchCase = "200"> 200 value</h2>
+    <h2 *ngSwitchCase = "100"> 100  value</h2>
+    <h2 *ngSwitchDefault> default h2 </h2>
   
+  </div>
+  
+  
+  <div class ="container ">
+    I like Pune
+  </div>
+  
+  <div [ngClass]= "color == 'pink' ? 'container1' : 'container'">
+    I like Pune
+  </div>
+  
+  <h2 [class.container] = "test == 200"
+      [class.container1] = "test == 100"
+      [class.container3] = "test == 300" >
+  h22222222222222222222222222
+  </h2>
+  
+  <p style = "color:aqua; font-size: 30px;">paraaaaa</p>
+  <p [ngStyle] = "styleCss == 'yellow' ? {'color' : 'yellow'}: {'color' :'green', 'font-size' : '30px'}"> pararjhbdbkdbckjbd</p>
+  
+  <br><br><br>

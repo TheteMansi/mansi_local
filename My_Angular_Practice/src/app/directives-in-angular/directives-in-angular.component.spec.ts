@@ -6,10 +6,12 @@ describe('DirectivesInAngularComponent', () => {
   let component: DirectivesInAngularComponent;
   let fixture: ComponentFixture<DirectivesInAngularComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+   await TestBed.configureTestingModule({
       declarations: [DirectivesInAngularComponent]
-    });
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(DirectivesInAngularComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

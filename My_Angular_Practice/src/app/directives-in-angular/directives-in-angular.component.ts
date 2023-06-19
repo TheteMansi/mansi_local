@@ -22,9 +22,36 @@ export class DirectivesInAngularComponent {
       {carName : 'i10', carPrice:500000, color:'white'},
       {carName : 'i20', carPrice:1000000, color:'black'},
     ];
-
+    tableHeadings: string[] = ['CarName', 'CarPrice', 'Color'];
     data = [20,60,50,30,[60,30,89]]
-   
+    data2:any[] = [];
+    data3:any[] = [];
+    //let xyz = []; //js / within function only
+    // xyz = [];  property with empty array
+    color = 'pink';
+    styleCss = 'yellow2';
+    test = 300;
+    switchValue = 1003;
+  
+    constructor() {
+  
+    }
+  
+    ngOnInit() {
+      this.data.forEach((item,i)=>{
+        if( i != 4 ){
+          this.data2.push(item)
+        }
+      })
+  
+      this.data.forEach((item:any,i)=>{
+        if( i == 4){
+          this.data3 = [...item]; //
+        }
+      })
+    }
+  
+  
     toggelEffect(){
       let abc ;
       //this.toggel = false;
