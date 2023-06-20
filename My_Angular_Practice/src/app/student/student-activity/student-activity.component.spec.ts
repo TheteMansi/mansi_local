@@ -10,6 +10,7 @@ describe('StudentActivityComponent', () => {
     TestBed.configureTestingModule({
       declarations: [StudentActivityComponent]
     });
+    
     fixture = TestBed.createComponent(StudentActivityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

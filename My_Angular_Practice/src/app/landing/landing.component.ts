@@ -21,4 +21,7 @@ export class LandingComponent {
    directives(){
      this.router.navigateByUrl('directives');
    }
+   signUp(){
+    this.router.navigateByUrl('signUp');
+  }
 }

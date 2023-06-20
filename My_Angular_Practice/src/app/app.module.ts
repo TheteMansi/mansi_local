@@ -5,20 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { DirectivesInAngularComponent } from './directives-in-angular/directives-in-angular.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+console.log('app.module.ts file');
+
 
 @NgModule({
-  declarations: [
+  declarations: [//components, directives, pipes
     AppComponent,
     LandingComponent,
     LoginComponent,
-    SignupComponent,
-    DirectivesInAngularComponent
+   DirectivesInAngularComponent,
   ],
-  imports: [
+  imports: [//modules
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
