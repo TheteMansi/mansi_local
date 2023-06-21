@@ -55,3 +55,10 @@
         <button [disabled]="!signUpForm.valid"  (click)="submit()"> Submit </button>
     </form>
 </div>
+
+<!--      *ngIf="signUpForm.get('name')?.errors?.['required'] && signUpForm.get('name')?.touched">
+            Name is required
+        </span>
+        <span class="err" *ngIf="signUpForm.get('name')?.errors?.['pattern']">
+            Please Enter Valid Name
+        </span><br> -->
