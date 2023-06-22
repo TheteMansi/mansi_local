@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-student-activity',
   templateUrl: './student-activity.component.html',
@@ -15,6 +16,8 @@ export class StudentActivityComponent {
   pass:any;
   confirmPass:any
   showPassword!:boolean;
+  studentdataservice: any;
+  storingDataService: any;
   constructor(private fb: FormBuilder){}
 
   showForm(){
@@ -28,18 +31,12 @@ export class StudentActivityComponent {
     this.sigInForm = this.fb.group({
       password:[''],
       confirmPassword:[''],
-      name:['',[Validators.required,this.nameValidation,this.whiteSpaceValidator]]
-     }
-     )
+      name:['',[Validators.required,this.nameValidation,this.storingDataService.whiteSpaceValidator]]
+     })
 
   }
   
-  whiteSpaceValidator(name:any){
-    let data = name.value;
-    let newdata = data?.trim();
-    let isValid = data.length != newdata.length ;
-    return isValid ? {whiteSpace:true} : null
-  }
+  
 
   //copy Copy COPY CoPy COPY.....
   nameValidation(inp:any){
@@ -79,5 +76,15 @@ export class StudentActivityComponent {
   }
   showPass(){
     this.showPassword = !this.showPassword;
+  }
+  getData(){
+    this.studentdata  = this.studentdataservice.studentData;
+    console.log(' this.studentData >>>', this.studentdata );
+   let x = this.studentdataservice.test(40,50);
+   console.log('x',x);
+   
+}
+  studentdata(arg0: string, studentdata: any) {
+    throw new Error('Method not implemented.');
   }
 }
