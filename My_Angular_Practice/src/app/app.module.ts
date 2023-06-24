@@ -7,6 +7,9 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { DirectivesInAngularComponent } from './directives-in-angular/directives-in-angular.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
 
 console.log('app.module.ts file');
 
@@ -17,6 +20,9 @@ console.log('app.module.ts file');
     LandingComponent,
     LoginComponent,
    DirectivesInAngularComponent,
+   ParentComponent,
+   ChildComponent,
+   LifecyclehooksComponent,
   ],
   imports: [//modules
     BrowserModule,

@@ -1,0 +1,12 @@
+<p>parent works!</p>
+<p>test</p>
+<button (click)="set()">set Data</button><br>
+<br>
+Name: <input type="text" [(ngModel)]="name">
+valueFromChild : {{valueFromChild}}<br>
+-----------------------
+<app-child [dataFromParent]="name" (dataFromChild)="getData($event)"></app-child>
+
+<br>
+--------------------------------------<br>
+<app-student-demo></app-student-demo>
