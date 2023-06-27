@@ -10,6 +10,8 @@ export class ParentComponent {
   parentdata:any;
   name:any="";
   valueFromChild:any;
+  parentName = 'poonam';
+  surName:any;
   constructor(public storingDataService : StoringDataService){
 
   }
@@ -22,6 +24,11 @@ export class ParentComponent {
     this.valueFromChild = value;
     
   }
+  surname(surName:any){
+    console.log(surName);
+    this.surName = surName;
+  }
+
 
 
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'; //import section
-import { Router } from '@angular/router' ;
+import { Router } from '@angular/router';
 import { StoringDataService } from '../storingdata.service';
 import { StudentdataService } from '../student/studentdata.service';
 
- 
+
 @Component({ //component directive
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -11,12 +11,12 @@ import { StudentdataService } from '../student/studentdata.service';
 })
 export class LandingComponent {
 
-  test : any ;  //property section
-  userName!:string;
-  list:any;
-  studentsData:any;
+  test: any;  //property section
+  userName!: string;
+  list: any;
+  studentsData: any;
   //stringified JSON
-  jsonData =  {
+  jsonData = {
     "admin": [
       {
         name: 'om',
@@ -32,7 +32,7 @@ export class LandingComponent {
   //  JSON is a format for storing and transporting data.
   //  JSON is often used when data is sent from a server to a web page.
   //  JSON is a lightweight data interchange format
-  sData:any = {
+  sData: any = {
     admin: [
       {
         name: 'om',
@@ -45,45 +45,67 @@ export class LandingComponent {
     massage: "success"
   };
 
-  constructor(private router : Router,
+  constructor(private router: Router,
     private sDataService: StoringDataService,
-    private studentDataService : StudentdataService
-    ){  //di-dependancy Injection
+    private studentDataService: StudentdataService
+  ) {  //di-dependancy Injection
 
- }
-    ngOnInit(){
-     this.userName = this.sDataService.userFullName;
-     console.log('  this.userName>>>',  this.userName);
-    this.list = this.sDataService.listOfUsers;
-     //setting json data to service
-    this.studentDataService.data = this.jsonData ;
-   
   }
-   login(){ //functions , lifecycle hooks
-     this.router.navigateByUrl('/login');
-   }
-   studentActivity(){
-     this.router.navigateByUrl('student/studentActivity');
-   }
-   directives(){
-     this.router.navigateByUrl('directives');
-   }
-   signUp(){
+  ngOnChanges() {
+    console.log('OnChanges');
+
+  }
+  ngOnInit() {
+    console.log('oninit');
+
+    this.userName = this.sDataService.userFullName;
+    console.log('  this.userName>>>', this.userName);
+    this.list = this.sDataService.listOfUsers;
+    //setting json data to service
+    this.studentDataService.data = this.jsonData;
+
+  }
+  login() {  //functions , lifecycle hooks
+
+    this.router.navigateByUrl('/login');
+  }
+  studentActivity() {
+    this.login()
+    this.router.navigateByUrl('student/studentActivity');
+  }
+  directives() {
+    this.router.navigateByUrl('directives');
+  }
+  signUp() {
     this.router.navigateByUrl('signUp');
   }
-  show(){
+  show() {
     this.studentsData = this.sDataService.studentData;
     console.log(this.sData);
-  //JSON.stringify()
-  let strigiFyedData = JSON.stringify(this.sData);
-  console.log('stringifyedData',strigiFyedData);
+    //JSON.stringify()
+    let strigiFyedData = JSON.stringify(this.sData);
+    console.log('stringifyedData', strigiFyedData);
 
- //JSON.parse()
- let parsedData = JSON.parse(strigiFyedData );
- console.log('parsedData>>',parsedData);
-  
+    //JSON.parse()
+    let parsedData = JSON.parse(strigiFyedData);
+    console.log('parsedData>>', parsedData);
+
+  }
+  lifeCycleHooks() {
+    this.router.navigateByUrl('life cycle hooks');
+  }
+  parent() {
+    this.router.navigateByUrl('parent');
+  }
+  child() {
+    this.router.navigateByUrl('child');
+  }
 }
-lifeCycleHooks(){
-  this.router.navigateByUrl('life cycle hooks');
+function ngOnInit() {
+  throw new Error('Function not implemented.');
 }
+
+function login() {
+  throw new Error('Function not implemented.');
 }
+
