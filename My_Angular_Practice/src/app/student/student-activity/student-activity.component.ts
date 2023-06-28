@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { studentdataservice } from '../StudentdataService';
+import { StoringDataService } from 'src/app/storingdata.service';
 
 @Component({
   selector: 'app-student-activity',
@@ -16,9 +18,12 @@ export class StudentActivityComponent {
   pass:any;
   confirmPass:any
   showPassword!:boolean;
-  studentdataservice: any;
-  storingDataService: any;
-  constructor(private fb: FormBuilder){}
+  studentData:any;
+  strongPassword :any;
+  constructor(private fb: FormBuilder,
+    public studentDataService:studentdataservice,
+    private storingDataService : StoringDataService){}
+
 
   showForm(){
      //this.showSignInForm = true;
@@ -46,45 +51,39 @@ export class StudentActivityComponent {
     return isErr ? {Err : true}: null;
   }
 
-
-  passwordValidatior(inp:any){
-    console.log(inp.value);
-    console.log(this.pass);
-   
-
-
-  }
   password() {
 
     this.passwordValue = this.sigInForm.value.password;
     if (this.passwordValue == this.confirmPassValue) {
-      this.isMatch = true;
+      this.isMatch = false;
     }
     else {
-      this.isMatch = false;
+      this.isMatch = true;
+    }
+    let pasLength = this.passwordValue.length;
+    if(pasLength > 10){
+      this.strongPassword =true;
     }
   }
 
   confirmPassword() {
     this.confirmPassValue = this.sigInForm.value.confirmPassword;
     if (this.passwordValue == this.confirmPassValue) {
-      this.isMatch = true;
+      this.isMatch = false;
     }
     else {
-      this.isMatch = false;
+      this.isMatch = true;
     }
   }
   showPass(){
     this.showPassword = !this.showPassword;
   }
   getData(){
-    this.studentdata  = this.studentdataservice.studentData;
-    console.log(' this.studentData >>>', this.studentdata );
-   let x = this.studentdataservice.test(40,50);
+    this.studentData  = this.studentDataService.studentData;
+    console.log(' this.studentData >>>', this.studentData );
+   let x = this.studentDataService.test(40,50);
    console.log('x',x);
    
-}
-  studentdata(arg0: string, studentdata: any) {
-    throw new Error('Method not implemented.');
+
   }
 }

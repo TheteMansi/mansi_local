@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { StoringDataService } from '../storingdata.service';
+import { studentdataservice } from '../student/StudentdataService'
+
+
 
 @Component({
   selector: 'app-sign-up',
@@ -21,16 +24,26 @@ export class SignUpComponent {
    }
    constructor(private fb: FormBuilder, 
     private sDataService : StoringDataService,
-     private router: Router){}
+     private router: Router,
+     private studentDataService: studentdataservice){}
 
-    ngOnInit(){
-       this.formDef();
-       this.sDataService.studentData =  this.student; //set student obj to service property studentData
-    }
+     ngOnInit(){
+      this.formDef();
+      this.sDataService.studentData =  this.student; //set student obj to service property studentData
+        this.studentDataService.data;
+       console.log(" this.data  >>", this.data  );
+       
+     }
+  data(arg0: string, data: any) {
+    throw new Error('Method not implemented.');
+  }
+
+     
 
      formDef(){
         this.signUpForm = this.fb.group({
-          fullName : ['',[Validators.required, Validators.pattern("[a-zA-Z ]*$"),Validators.minLength(10)]],
+          fullName : ['',[Validators.required, Validators.pattern("[a-zA-Z ]*$"),
+          Validators.minLength(10),this.sDataService.whiteSpaceValidator]],
           mobNo:['',[Validators.pattern("[0-9]*$"),Validators.minLength(10),Validators.maxLength(10)]],
           email:[],
           userName:[],

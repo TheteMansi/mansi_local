@@ -9,7 +9,8 @@ describe('StudentActivityComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [StudentActivityComponent]
-    });
+    })
+    .compileComponents();
     
     fixture = TestBed.createComponent(StudentActivityComponent);
     component = fixture.componentInstance;

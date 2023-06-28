@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'; //import section
 import { Router } from '@angular/router';
 import { StoringDataService } from '../storingdata.service';
-import { StudentdataService } from '../student/studentdata.service';
+import { studentdataservice } from '../student/StudentdataService';
 
 
 @Component({ //component directive
@@ -47,7 +47,7 @@ export class LandingComponent {
 
   constructor(private router: Router,
     private sDataService: StoringDataService,
-    private studentDataService: StudentdataService
+    private studentDataService: studentdataservice
   ) {  //di-dependancy Injection
 
   }
