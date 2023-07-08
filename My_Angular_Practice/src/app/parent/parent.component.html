@@ -4,9 +4,10 @@
 <br>
 Name: <input type="text" [(ngModel)]="name">
 valueFromChild : {{valueFromChild}}<br>
+surName value: {{surName}}
 -----------------------
-<app-child [dataFromParent]="name" (dataFromChild)="getData($event)"></app-child>
+<app-child [dataFromParent]="name" [parentsDataName]="parentName" (surName)="surname($event)"
+ (dataFromChild)="getData($event)"></app-child>
 
 <br>
 --------------------------------------<br>
-<app-student-demo></app-student-demo>

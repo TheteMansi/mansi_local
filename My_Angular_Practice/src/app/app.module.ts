@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { LifecyclehooksComponent } from './lifecyclehooks/lifecyclehooks.component';
+import { FormComponent } from './form/form.component';
 
 console.log('app.module.ts file');
 
@@ -23,6 +24,7 @@ console.log('app.module.ts file');
    ParentComponent,
    ChildComponent,
    LifecyclehooksComponent,
+   FormComponent,
   ],
   imports: [//modules
     BrowserModule,
