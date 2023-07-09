@@ -2,6 +2,7 @@ import { Component } from '@angular/core'; //import section
 import { Router } from '@angular/router';
 import { StoringDataService } from '../storingdata.service';
 import { studentdataservice } from '../student/StudentdataService';
+import { CommonApiCallService } from '../student/common-apicall.service';
 
 
 @Component({ //component directive
@@ -44,10 +45,12 @@ export class LandingComponent {
     statusCode: 200,
     massage: "success"
   };
-
+  getApiResponse: any;
+  getByIdData:any;
   constructor(private router: Router,
     private sDataService: StoringDataService,
-    private studentDataService: studentdataservice
+    private studentDataService: studentdataservice,
+    public commonApiCallService : CommonApiCallService,
   ) {  //di-dependancy Injection
 
   }
@@ -63,10 +66,10 @@ export class LandingComponent {
     this.list = this.sDataService.listOfUsers;
     //setting json data to service
     this.studentDataService.data = this.jsonData;
-
+    this.show()
   }
   login() {  //functions , lifecycle hooks
-
+    this.sDataService.myName = 'poonam';
     this.router.navigateByUrl('/login');
   }
   studentActivity() {
@@ -100,12 +103,37 @@ export class LandingComponent {
   child() {
     this.router.navigateByUrl('child');
   }
-}
-function ngOnInit() {
-  throw new Error('Function not implemented.');
-}
-
-function login() {
-  throw new Error('Function not implemented.');
-}
+  apicall(){
+    this.router.navigateByUrl('student/apiCall')
+  }
+  getApiCall(){
+    console.log('get method calling');
+    let endpoint = 'admin';
+    this.commonApiCallService.getApiCall(endpoint).subscribe((response: any) =>{
+      this.getApiResponse = response;
+    })
+    console.log(" this.getApiResponse", this.getApiResponse);
+    
+  }
+  form(){
+    this.router.navigateByUrl('form');
+  }
+  getById(){
+    //api id
+    // this.commonApiCallService.getById(4,'admin').subscribe(res=>{
+    //    this.getByIdData = res;
+    //    console.log(res);
+       
+    // })
+    this.commonApiCallService.getApiCall('admin',3).subscribe((response: any) =>{
+      console.log(response);
+    })
+  }
+  delete(){
+     this.commonApiCallService.deletApiCall('admin',2).subscribe((resp: any)=>{
+      console.log('delet respo', resp);
+      
+     })
+  }
+  }
 

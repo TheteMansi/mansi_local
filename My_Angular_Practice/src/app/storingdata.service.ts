@@ -9,5 +9,6 @@ export class StoringDataService {
   studentData: any;
   setData: string | undefined;
   whiteSpaceValidator: any | string;
+  myName: string | undefined;
   constructor() { }
 }
